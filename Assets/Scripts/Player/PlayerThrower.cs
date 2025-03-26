@@ -36,6 +36,7 @@ public class PlayerThrower : NetworkBehaviour
     public PlayerLauncher PlayerLauncher => playerLauncher;
     public NetworkVariable<PlayableState> ThisPlayableState => thisPlayableState;
     public NetworkVariable<FixedString32Bytes> PlayerName => playerName;
+
     public NetworkVariable<int> PlayerPearls => playerPearls;
 
     public override void OnNetworkSpawn()
@@ -82,6 +83,24 @@ public class PlayerThrower : NetworkBehaviour
 
         }
 
+    }
+
+
+    private void Setup()
+    {
+        //Setup dos eventos
+        PlayerInventory.OnItemSelected += SubscribeToOnItem;
+    }
+
+    private void SubscribeToOnItem(int obj)
+    {
+        //Garante a ordem correta dos eventos
+        PlayerLauncher.PlayerInventory_OnItemSelected(obj);
+    }
+
+    private void UnSubscribeToOnItem(int obj)
+    {
+        PlayerLauncher.PlayerInventory_OnItemSelected(obj);
     }
 
 

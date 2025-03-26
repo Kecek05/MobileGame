@@ -73,14 +73,14 @@ public class ClientGameManager : IDisposable //Actual Logic to interact with UGS
         //await AuthenticationService.Instance.SignInWithUsernamePasswordAsync("kecekTest", "Passw0rd!");
         //AuthState authState = AuthState.Authenticated;
         //
-        //Debug.Log($"Player ID: {AuthenticationService.Instance.PlayerId}");
+        Debug.Log($"Player ID: {AuthenticationService.Instance.PlayerId}");
 
-        //var arguments = new Dictionary<string, object> 
-        //{ 
-        //    { ADD_PEARLS_ARGUMENT_PLAYERID, AuthenticationService.Instance.PlayerId },
-        //    { ADD_PEARLS_ARGUMENT_PEARLS, 100 }
-        //};
-        //await CloudCodeService.Instance.CallEndpointAsync(ADD_PEARLS_ENDPOINT, arguments);
+        var arguments = new Dictionary<string, object>
+        {
+            { ADD_PEARLS_ARGUMENT_PLAYERID, AuthenticationService.Instance.PlayerId },
+            { ADD_PEARLS_ARGUMENT_PEARLS, 100 }
+        };
+        await CloudCodeService.Instance.CallEndpointAsync(ADD_PEARLS_ENDPOINT, arguments);
 
 
 

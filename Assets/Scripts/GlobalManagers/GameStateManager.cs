@@ -120,6 +120,7 @@ public class GameStateManager : NetworkBehaviour
 
         Debug.Log($"Game State Changed to: {newValue}");
     }
+
     public void ConnectionLostHostAndClient()
     {
         OnLostConnectionInHost?.Invoke();

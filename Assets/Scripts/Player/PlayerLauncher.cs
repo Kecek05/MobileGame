@@ -17,6 +17,7 @@ public class PlayerLauncher : NetworkBehaviour
     [SerializeField] private InputReader inputReader;
     [SerializeField] private Transform spawnItemPos;
     [SerializeField] private PlayerThrower player;
+    [SerializeField] private PlayerInventory playerInventory;
 
     //private BaseItemThrowableActivable itemThrowableActivableClient;
     //private BaseItemThrowableActivable itemThrowableActivableServer;
@@ -27,7 +28,14 @@ public class PlayerLauncher : NetworkBehaviour
             player.PlayerStateMachine.OnStateChanged += PlayerStateMachine_OnStateChanged;
 
             inputReader.OnTouchPressEvent += InputReader_OnTouchPressEvent;
+
+            player.PlayerInventory.OnItemSelected += PlayerInventory_OnItemSelected;
         }
+    }
+
+    public void PlayerInventory_OnItemSelected(int obj)
+    {
+        Debug.Log("Acontecer algo");
     }
 
     private void InputReader_OnTouchPressEvent(InputAction.CallbackContext context)
